@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActinactuserService } from '../actinactuser.service';
 import { UsermanagementService } from '../usermanagement.service';
 
 @Component({
@@ -7,14 +8,19 @@ import { UsermanagementService } from '../usermanagement.service';
   styleUrls: ['./child0.component.css']
 })
 export class Child0Component implements OnInit {
-
-  constructor(private usermanagement:UsermanagementService) { }
+inactiveusers=[];
+  constructor(private usermanagement:UsermanagementService, private actinact:ActinactuserService) { }
 
   adduser(){
     this.usermanagement.adduser()
   }
 
+  activate(i){
+    this.actinact.activate(i)
+  }
+
   ngOnInit(): void {
+    this.inactiveusers=this.actinact.inactiveusers;
   }
 
 }

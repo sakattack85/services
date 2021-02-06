@@ -1,1 +1,11 @@
 <button (click)="adduser()">Add</button>
+
+
+<p>-------------inactive-------------</p>
+<div *ngFor="let inactiveuser of inactiveusers; let i=index">
+    <p>{{inactiveuser}}
+<a href="#" (click)="activate(i)">
+Activate
+</a>
+    </p>
+</div>

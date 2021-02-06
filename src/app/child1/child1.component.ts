@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActinactuserService } from '../actinactuser.service';
 import { User } from '../user';
 import { UsermanagementService } from '../usermanagement.service';
 
@@ -9,11 +10,23 @@ import { UsermanagementService } from '../usermanagement.service';
 })
 export class Child1Component implements OnInit {
 users:User[]=[]
-  constructor(private usermanagement:UsermanagementService) { }
+activeusers=[]
+  constructor(private usermanagement:UsermanagementService,
+     private actinact:ActinactuserService) { }
 
+userselected(user){
+this.usermanagement.userselected.emit(user)
+}
+hovereduser(name){
+  this.usermanagement.userhovered.emit(name)
+}
+
+deactivate(i){
+this.actinact.deactivate(i)
+}
   ngOnInit(): void {
     this.users=this.usermanagement.userlist
-    
+    this.activeusers=this.actinact.activeusers
   }
 
 }

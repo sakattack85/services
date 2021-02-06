@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { User } from './user';
 import { UsercreationService } from './usercreation.service';
 
@@ -6,6 +6,9 @@ import { UsercreationService } from './usercreation.service';
   providedIn: 'root'
 })
 export class UsermanagementService {
+  @Output() userselected=new EventEmitter();
+  @Output() userhovered=new EventEmitter();
+  
   adduser() {
     this.userlist.push(new User('iosifnew',"nnnnnn@dfdfkf"))
     console.log('added')
