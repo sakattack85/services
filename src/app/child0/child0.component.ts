@@ -16,11 +16,15 @@ inactiveusers=[];
   }
 
   activate(i){
-    this.actinact.activate(i)
+    this.actinact.useractivated.emit({username:this.inactiveusers[i],i})
+    this.inactiveusers.splice(i,1)
   }
 
   ngOnInit(): void {
     this.inactiveusers=this.actinact.inactiveusers;
+    this.actinact.userdeactivated.subscribe((user)=>{
+      this.inactiveusers.push(user)
+    })
   }
 
 }

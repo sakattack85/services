@@ -1,7 +1,16 @@
 <div *ngFor="let user of users">
-<p (click)="userselected(user)"  (mouseover)="hovereduser(user.name)">
+<p (click)="userselected(user)"  (mouseover)="hovereduser()">
     {{user.name}} - {{user.email}}</p>
 </div>
 
+
+<p>-------------active-------------</p>
+<div *ngFor="let activeuser of activeusers; let i=index">
+    <p>{{activeuser}}
+<a href="#" (click)="deactivate(i)">
+Deactivate
+</a>
+    </p>
+</div>
 
 

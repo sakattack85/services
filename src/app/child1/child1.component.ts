@@ -22,11 +22,16 @@ hovereduser(name){
 }
 
 deactivate(i){
-this.actinact.deactivate(i)
+this.actinact.userdeactivated.emit(this.activeusers[i])
+this.activeusers.splice(i,1)
 }
   ngOnInit(): void {
     this.users=this.usermanagement.userlist
     this.activeusers=this.actinact.activeusers
+
+    this.actinact.useractivated.subscribe((response)=>{
+      this.activeusers.push(response.username)
+    })
   }
 
 }
